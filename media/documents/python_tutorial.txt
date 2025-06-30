@@ -1,0 +1,34 @@
+Python dasturlash tili haqida
+
+Python - bu yuqori darajadagi, umumiy maqsadli dasturlash tili hisoblanadi. U 1991-yilda Guido van Rossum tomonidan yaratilgan.
+
+Python ning asosiy xususiyatlari:
+- Oson o'rganish va foydalanish
+- Ko'p platformada ishlash imkoniyati
+- Keng kutubxonalar to'plami
+- Object-oriented dasturlashni qo'llab-quvvatlash
+- Dinamik tipizatsiya
+
+Python dasturlash tilida quyidagi sohalar bo'yicha ishlanadi:
+- Web development (Django, Flask)
+- Data Science va Machine Learning
+- Artificial Intelligence
+- Automation va scripting
+- Desktop application development
+
+Python sintaksisi juda sodda va tushunarli. Masalan:
+
+print("Salom dunyo!")
+
+for i in range(5):
+    print(f"Raqam: {i}")
+
+Python community juda faol va yordam beruvchi. PyPI (Python Package Index) orqali minglab kutubxonalar mavjud.
+
+Python tilida ishlash uchun:
+1. Python o'rnatish (python.org dan)
+2. IDE tanlash (PyCharm, VS Code, Sublime Text)
+3. Virtual environment yaratish
+4. Kerakli kutubxonalarni pip orqali o'rnatish
+
+Python bu zamonaviy dasturlashning ajralmas qismidir.

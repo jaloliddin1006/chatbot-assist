@@ -1,0 +1,50 @@
+Django Framework haqida ma'lumot
+
+Django - bu Python tilida yozilgan web framework bo'lib, tez va xavfsiz web ilovalari yaratish uchun ishlatiladi.
+
+Django ning asosiy tushunchalari:
+
+1. Models - Ma'lumotlar bazasi bilan ishlash
+Django ORM (Object-Relational Mapping) orqali ma'lumotlar bazasi bilan oson ishlash imkonini beradi.
+
+Misol:
+class User(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+
+2. Views - Business logic
+View funksiyalar HTTP so'rovlarni qabul qilib, javob qaytaradi.
+
+def home(request):
+    return render(request, 'home.html')
+
+3. Templates - HTML shablonlar
+Django template engine orqali dinamik HTML yaratish.
+
+4. URLs - Routing
+URL pattern lar orqali so'rovlarni view larga yo'naltirish.
+
+Django ning afzalliklari:
+- Admin panel avtomatik yaratish
+- Xavfsizlik (CSRF, SQL injection himoyasi)
+- Scalability - katta loyihalar uchun mos
+- DRY principle (Don't Repeat Yourself)
+- Katta community va hujjatlar
+
+Django bilan qanday loyihalar yaratish mumkin:
+- CMS (Content Management System)
+- E-commerce saytlar
+- Blog va yangiliklar sayti
+- REST API
+- Social media platformalar
+
+Django o'rnatish:
+pip install django
+
+Yangi loyiha yaratish:
+django-admin startproject myproject
+
+Server ishga tushirish:
+python manage.py runserver
+
+Django bu professional web development uchun eng yaxshi tanlovlardan biri hisoblanadi.
