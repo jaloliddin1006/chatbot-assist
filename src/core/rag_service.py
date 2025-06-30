@@ -12,8 +12,15 @@ logger = logging.getLogger(__name__)
 
 
 class RAGService:
-    def __init__(self, groq_api_key: str = None, chroma_persist_dir: str = "chroma_db"):
+    def __init__(self, groq_api_key: str = None, chroma_persist_dir: str = None):
         """RAG Service yaratish"""
+        if chroma_persist_dir is None:
+            # Default path - loyiha root papkasidagi chroma_db
+            import os
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            project_root = os.path.dirname(os.path.dirname(current_dir))
+            chroma_persist_dir = os.path.join(project_root, 'chroma_db')
+            
         self.chroma_manager = ChromaManager(persist_directory=chroma_persist_dir)
         self.groq_manager = GroqManager(api_key="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")
         self.document_processor = DocumentProcessor()

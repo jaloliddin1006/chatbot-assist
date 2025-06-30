@@ -1,0 +1,101 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static %}
+
+{% block title %}ChromaDB Holati{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">Bosh sahifa</a>
+&rsaquo; ChromaDB Holati
+</div>
+{% endblock %}
+
+{% block content %}
+<h1>ChromaDB Holati</h1>
+
+<div class="module">
+    <h2>Umumiy statistika</h2>
+    
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ChromaDB dagi hujjatlar soni:</th>
+                <td><strong>{{ collection_count }}</strong> ta chunk</td>
+            </tr>
+            <tr>
+                <th>Process qilingan hujjatlar:</th>
+                <td><strong>{{ processed_docs }}</strong> ta</td>
+            </tr>
+            <tr>
+                <th>Jami hujjatlar:</th>
+                <td><strong>{{ total_docs }}</strong> ta</td>
+            </tr>
+            <tr>
+                <th>Process qilinmagan hujjatlar:</th>
+                <td><strong>{{ unprocessed_docs }}</strong> ta</td>
+            </tr>
+            <tr>
+                <th>Jarayonda bo'lgan hujjatlar:</th>
+                <td><strong>{{ processing_docs }}</strong> ta</td>
+            </tr>
+            <tr>
+                <th>Xatolik bilan yakunlangan:</th>
+                <td><strong>{{ error_docs }}</strong> ta</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="module">
+    <h2>Tizim ma'lumotlari</h2>
+    
+    <div class="help">
+        <p><strong>ChromaDB:</strong> RAG (Retrieval-Augmented Generation) tizimi uchun vektor bazasi.</p>
+        <p><strong>Chunk:</strong> Katta hujjatlar kichik qismlarga bo'linadi, har bir qism alohida chunk deb ataladi.</p>
+        <p><strong>Process qilish:</strong> Hujjatlar matnini chiqarish, chunklarga bo'lish va ChromaDB ga yuklash jarayoni.</p>
+        <p><strong>Background Processing:</strong> Fayllar background da thread yordamida yuklanadi, bu admin panelni blok qilmaydi.</p>
+        <p><strong>Status:</strong> PENDING - kutilmoqda, PROCESSING - yuklanmoqda, PROCESSED - tayyor, ERROR - xatolik.</p>
+    </div>
+</div>
+
+<div class="submit-row">
+    <a href="{% url 'admin:main_document_changelist' %}" class="default">Hujjatlar ro'yxatiga qaytish</a>
+</div>
+
+<style>
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    width: 300px;
+}
+
+.module h2 {
+    background: #417690;
+    color: white;
+    padding: 5px 10px;
+    margin: 0 0 10px 0;
+}
+
+.module {
+    border: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.module > div, .module > table {
+    padding: 10px;
+}
+</style>
+
+{% endblock %}

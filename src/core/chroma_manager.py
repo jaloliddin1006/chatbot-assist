@@ -9,12 +9,22 @@ import logging
 from sentence_transformers import SentenceTransformer
 import uuid
 
+# Telemetry muammosini hal qilish uchun
+os.environ['ANONYMIZED_TELEMETRY'] = 'False'
+
 logger = logging.getLogger(__name__)
 
 
 class ChromaManager:
-    def __init__(self, persist_directory: str = "chroma_db"):
+    def __init__(self, persist_directory: str = None):
         """ChromaDB boshqaruvchisi"""
+        if persist_directory is None:
+            # Default path - loyiha root papkasidagi chroma_db
+            import os
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            project_root = os.path.dirname(os.path.dirname(current_dir))
+            persist_directory = os.path.join(project_root, 'chroma_db')
+            
         self.persist_directory = persist_directory
         self.client = None
         self.collection = None
@@ -24,8 +34,17 @@ class ChromaManager:
     def initialize(self):
         """ChromaDB ni ishga tushirish"""
         try:
+            # Telemetry ni o'chirish
+            os.environ['ANONYMIZED_TELEMETRY'] = 'False'
+            
             # ChromaDB client yaratish
-            self.client = chromadb.PersistentClient(path=self.persist_directory)
+            self.client = chromadb.PersistentClient(
+                path=self.persist_directory,
+                settings=Settings(
+                    anonymized_telemetry=False,
+                    allow_reset=True
+                )
+            )
             
             # Embedding model yuklash
             self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2')

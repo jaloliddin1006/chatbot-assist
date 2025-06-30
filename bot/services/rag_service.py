@@ -40,12 +40,9 @@ class BotRAGService:
                 return
                 
             groq_api_key = "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"
-            chroma_persist_dir = os.path.join(project_root, 'chroma_db')
             
-            self.rag_service = RAGService(
-                groq_api_key=groq_api_key,
-                chroma_persist_dir=chroma_persist_dir
-            )
+            # RAG Service o'zi default path ishlatadi
+            self.rag_service = RAGService(groq_api_key=groq_api_key)
             logger.info("Bot RAG Service ishga tushirildi")
             
         except Exception as e:

@@ -10,10 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 import pytz
 import environ
-import os
+
+# ChromaDB telemetry muammosini hal qilish uchun
+os.environ['ANONYMIZED_TELEMETRY'] = 'False'
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Load environment variables from .env file
@@ -130,6 +133,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Media files (uploaded files)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
